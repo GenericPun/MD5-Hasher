@@ -1,0 +1,23 @@
+======================
+TO USE THE SOFTWARE:
+======================
+
+Follow the instructions in the README.txt file.
+Once the site is up, you can use the full fuctionality of MD5 Hasher. This includes the:
+
+- Home page
+	In the home page, you are able to hash an input file. To do this:
+	Click the box with the text "Input text to be hashed..."
+            	Input letters into the box using your keyboard. Try the phrase: "A fish is a complete system"
+	If you wish to view the variables as they change through the program, click the slider next to "Detailed View:"
+	When you are ready to hash, click the "Submit" button.
+	Observe the output! Found under "Output:".
+	Note that if you have selected the "Detailed View:" slider, you may have to scroll to find the "Output:" section.
+- About page
+	Read the information on the page.
+- Algorithm page
+	Read the information on the page.
+- Flaws page
+	Read the information on the page.
+- Help page
+	Read the information on the page.

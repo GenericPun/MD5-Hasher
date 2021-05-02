@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <title> MD5 Hasher </title>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+        <li><a href="algorithm.htm">Algorithm</a></li>
+        <li><a href="flaws.htm">Flaws in MD5</a></li>
+        <li><a href="help.htm">Help</a></li>
+    </ul>
+    <script src="src/home.js"></script>
+    <div class="homediv">
+
+    <h1 style="margin-top:50px;">MD5 Hash</h1>
+    <h3>MD5 Hash Generator (With Steps)</h3>
+    <form id="hashForm">
+        <textarea placeholder="Input text to be hashed..." type="text" id="hashInput" name="hash"></textarea>
+        <br />
+        <table class="center">
+            <tr style=" background-color: #fdfdff">
+                <td>
+                    <h3 style="padding-top:0px; margin:0px;">Detailed View:</h3>
+                </td>
+                <td style="padding-left:0px; padding-top:19px">
+                    <label class="switch">
+                        <input id="detailed" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </tr>
+        </table>
+
+
+        <input class="button" type="button" onclick="md5hash()" id="hashBtn" value="Submit">
+    </form>
+    <script>
+        var input = document.getElementById("hashForm");
+        input.addEventListener("keydown", function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                document.getElementById("hashBtn").click();
+            }
+        });
+    </script>
+    <table id="detailedtable" class="detailedtable" class="alttable" class="center" hidden>
+
+        <tr>
+            <td><strong>Initial values</strong></td>
+            <td id="dv1"></td>
+        </tr>
+        <tr>
+            <td><strong>Input in little endian form</strong></td>
+            <td id="dv2"></td>
+        </tr>
+        <tr>
+            <td><strong>Length of the string (in bits)</strong></td>
+            <td id="dv3"></td>
+        </tr>
+        <tr>
+            <td><strong>After initial formatting</strong></td>
+            <td id="dv4"></td>
+        </tr>
+        <tr>
+            <td><strong>Main Loop</strong></td>
+            <td id="dv5"></td>
+        </tr>
+        <tr>
+            <td><strong>Hex values</strong></td>
+            <td id="dv6"></td>
+        </tr>
+        <tr>
+            <td><strong>Output</strong></td>
+            <td id="dv7"></td>
+        </tr>
+        <tr>
+            </br>
+            <td colspan="2" style="text-align:center"><strong><a href="algorithm.htm">Want to know how it works?</a></strong></td>
+        </tr>
+    </table>
+    <h4 id="outputtext"></h4>
+    <div id="output"></div>
+    <p id="chunks512"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <title> MD5 Hasher </title>
+</head>
+<body>
+    <ul>
+        <li><a href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+        <li><a class="active" href="algorithm.htm">Algorithm</a></li>
+        <li><a href="flaws.htm">Flaws in MD5</a></li>
+        <li><a href="help.htm">Help</a></li>
+    </ul>
+    <div class="algdiv">
+        <h1 style="margin-top:60px;">MD5 Algorithm</h1>
+        <h3 style="text-align: center;">How does it work?</h3>
+        <h4>Step 1: Converting a string into little endian</h4>
+        <p>
+
+            Little endian is a way of storing data, where binary is read from left to right. Most computers will do this to any input automatically, but when working at a high level language, manual conversion may be needed.
+            To do this, the string is separated into groups of four characters, and the order of these characters are reversed. For example, a string of “abcd1234xyz” is converted to “dcba4321zyx”.
+        </p>
+        <h4> Step 2: Convert to Binary</h4>
+        <p>
+            This step involves taking a string and converting each character to binary through an ASCII table. Once this step is finished, the string should only consist of binary digits. Note that some ASCII characters are only 7 bits - each character should represent a byte, so in some cases a 0 will need to be prepended.
+        </p>
+        <h4> Step 2a: Append a 1</h4>
+        <p>
+            This step should be performed with the previous step. While placing a binary 1 (10000000) at the end of a string sounds trivial, it is anything but. Note that in step 1, the string was converted to little endian. This means that the order of data in the string has been reversed in groups of 4, and as such appending a 1 has to happen to the last group of 4 characters.
+            To demonstrate, take the following string: “abcd123”. Using step 1, the string arrives at “dcba321”, and now need to append a binary 1. To do this step, the binary 1 is appended to the last character (which was a 3), so “abcd_321” would be the correct output (where _ is the binary 1.
+            If all chunks are full (chunk= 4 bytes), the 1 just goes in a new block.
+        </p>
+        <h4>Step 3: Append the length of the original string</h4>
+        <p>
+            To do this step, the length of the original string is recorded, converted to binary, and placed at the end of a block (block=16 chunks = 64 bytes). Note that the length of the original string is in the range of 2^64 characters, and consequently needs the last two chunks of a block. If a block is full, another block is made.
+        </p>
+        <h4>Step 4: Looping</h4>
+        <p>
+            This is the main step of the MD5 algorithm, but is fairly simple. Bitwise logic is used to manipulate the data stored in the formatting stage. In this step, four main bitwise operations are used:
+            </p>
+            <img src="src/carbon2.png" style="width:200px; float:left; padding: 0 10px 0 0;"></br></br></br></br></br></br></br>
+            <p>In this step, the variables a, b, c, and d are used. These are all initially set to the following values (in hexadecimal):
+            A= 01234567
+            B= 89abcdef
+            C= fedcba98
+            D= 76543210
+            Using these functions and variables, the main loop can begin.
+            Two other functions are used in this process - first of which is the Sine function. Simply, it takes a value, sines it, absolutes it, then multiples it by 2^32.
+            The second of these functions is the left rotate function, which performs a bitwise shift function as follows.
+
+                Additionally, a pre generated array is used for variable b to determine shift amounts (variable y in LeftRotate). It is labelled as the array s[].
+                The main loop is run for each block.
+                It is performed as follows:
+                </p> <img src="src/carbon.png" style="width:400px;">
+                <p>
+                It is important to note at this stage that each variable is only 4 bytes long, and any excess data should be cut off.
+                Once the above function is finished, the values should be added to the original values of A,B,C and D, and then run again for each block.
+                After this process is finished, the final values of A,B,C and D are found.
+        </p>
+        <h4>Step 5: Output</h4>
+        <p>
+            This step is much simpler; take the values of A, B, C, and D, perform step 1 on them, and join the string together! That is the output of the MD5 function.
+        </p>
+    </div>
+</body>
+</html>

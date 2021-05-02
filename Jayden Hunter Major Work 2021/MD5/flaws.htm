@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <title> MD5 Hasher </title>
+</head>
+<body>
+    <ul>
+        <li><a href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+        <li><a href="algorithm.htm">Algorithm</a></li>
+        <li><a class="active" href="flaws.htm">Flaws in MD5</a></li>
+        <li><a href="help.htm">Help</a></li>
+    </ul>
+    <div class="algdiv">
+        <h1 style="margin-top:60px;">MD5 Flaws</h1>
+        <h3 style="text-align: center;">Why is it broken?</h3>
+        <h4>Cryptography and MD5</h4>
+        <p>
+            MD5 is considered cryptographically insecure by cybersecurity professionals, for a variety of reasons.
+        </p>
+        <h4>
+            Collision Vulnerabilities
+        </h4>
+        <p>
+            By definition, hashing should convert any string to a hex output. There are 2^64 or about 18,000,000,000,000,000,000 different possible outputs. This means that it is meant to be infeasible by modern means to find two inputs that lead to the same output. In MD5, however, it is relatively easy to find collisions, due to the simplicity of the functions used. To demonstrate, the following strings hash to cee9a457e790cf20d4bdaa6d69f01e41;
+            </br>0eaU§ÐÆ÷½þ4ÏetO4ÀûeL@Ì/ë-¡£ôÜ»Isem}4¤ Y×ZÑï
+            </br>0eaU§ÐÆ÷½þ4ÏepO4ÀûeL@Ì/ë-¡£ô\»Isem}4¤ Y×ZÑï
+            </br>Try it!
+            What this means is that it is simple for hackers to write a malicious program, add some meaningless data to the end to create a collision, and enable their program to ‘pretend’ to be any other data.
+
+        </p>
+        <h4>
+            Rainbow Tables
+        </h4>
+        <p>
+            Rainbow tables are precomputed tables of hashes, and are readily available online. One look at <a href="https://www.md5online.org/md5-decrypt.html">Tools such as this one by MD5 Online</a>
+            demonstrate how easy it is to find the original version of a hash.
+          </br> Try the hash e6fb02de72b7014331fdbf1114935980 and see if you can find what it originally was!
+        </p>
+        <h4>
+            Cybersecurity Vulnerabilities
+        </h4>
+        <p>
+            If hackers have access to a website, swapping a file with a virus would be easily detectable by any regular user, by checking the hash values against the common consensus. By manipulating a malicious program, hackers can work around this by producing identical hashes to that found in a public file on a website, thus making it impossible to tell if a file is safe.
+            </br>By using MD5 as a checksum, websites create cybersecurity vulnerabilities through the ease of collision vulnerabilities.
+
+        </p>
+        <h4>
+            MD5 as a Password Encryptor
+        </h4>
+        <p>
+            The same reason as above applies for hashing passwords. While hashing is not reversible, it is easily brute-forceable, especially MD5 - a quick algorithm intended to run quickly. This means that if a password is encrypted by MD5, if a hacker gains access to that data, it’s as good as decrypted already.
+          </br> Sadly, MD5 is still used as a password and data encryptor in a quarter of Content Management Systems (CMS). This means that most likely, at least some of your data online is encrypted with the MD5 algorithm, which spells bad news for you if it is ever leaked...
+
+        </p>
+    </div>
+</body>
+</html>
